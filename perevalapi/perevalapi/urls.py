@@ -18,14 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from api.views import PerevalViewSet
+from api.views import PerevalViewSet, UserViewSet, CordsViewSet, LevelViewSet
 
 
 router = routers.DefaultRouter()
 router.register(r'pereval', PerevalViewSet)
+router.register(r'user', UserViewSet)
+router.register(r'cords', CordsViewSet)
+router.register(r'level', LevelViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('router/', include(router.urls)),
-    path('', include('rest_framework.urls', namespace='rest_framework')),
+    path('', include(router.urls)),
+    path('api/', include('rest_framework.urls', namespace='rest_framework')),
 ]
