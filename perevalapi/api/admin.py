@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Pereval, Cords, Level, Image
+from .models import PerevalAdded, Coords, Level, PerevalImage
 
 
-admin.site.register(Pereval)
-admin.site.register(Cords)
+admin.site.register(PerevalAdded)
+admin.site.register(Coords)
 admin.site.register(Level)
-admin.site.register(Image)
+admin.site.register(PerevalImage)

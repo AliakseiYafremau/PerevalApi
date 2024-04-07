@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-from .models import Pereval, User, Cords, Level
+from .models import PerevalAdded, User, Coords, Level
 
 
-class PerevalSerializer(serializers.ModelSerializer):
+class PerevalAddedSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Pereval
+        model = PerevalAdded
         fields = '__all__'
 
 
@@ -15,9 +15,9 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CordsSerializer(serializers.ModelSerializer):
+class CoordsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Cords
+        model = Coords
         fields = '__all__'
 
 

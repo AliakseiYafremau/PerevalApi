@@ -18,13 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from api.views import PerevalViewSet, UserViewSet, CordsViewSet, LevelViewSet
+from api.views import PerevalAddedViewSet, UserViewSet, CoordsViewSet, LevelViewSet
 
 
 router = routers.DefaultRouter()
-router.register(r'pereval', PerevalViewSet)
+router.register(r'pereval', PerevalAddedViewSet)
 router.register(r'user', UserViewSet)
-router.register(r'cords', CordsViewSet)
+router.register(r'coords', CoordsViewSet)
 router.register(r'level', LevelViewSet)
 
 urlpatterns = [

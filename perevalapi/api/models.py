@@ -1,9 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import User
+
+
+# Модель пользователя
+class User(models.Model):
+    email = models.EmailField(unique=True)
+    fam = models.CharField(max_length=25)
+    name = models.CharField(max_length=25)
+    otc = models.CharField(max_length=25)
+    phone = models.CharField(max_length=17, null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.email} | {self.fam} | {self.name}'
 
 
 # Модель координат перевала
-class Cords(models.Model):
+class Coords(models.Model):
     latitude = models.DecimalField(max_digits=12, decimal_places=4)
     longitude = models.DecimalField(max_digits=12, decimal_places=4)
     height = models.IntegerField()
@@ -24,7 +35,7 @@ class Level(models.Model):
 
 
 # Модель перевала
-class Pereval(models.Model):
+class PerevalAdded(models.Model):
 
     STATUS = [
         ('new', 'новый'),
@@ -38,18 +49,21 @@ class Pereval(models.Model):
     other_titles = models.CharField(max_length=50)
     connect = models.CharField(max_length=20, default="")
     status = models.CharField(max_length=50, choices=STATUS, default='new')
-    time = models.DateTimeField(auto_now_add=True)
+    add_time = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cords = models.ForeignKey(Cords, on_delete=models.PROTECT)
+    coords = models.ForeignKey(Coords, on_delete=models.PROTECT)
     level = models.ForeignKey(Level, on_delete=models.PROTECT)
 
     def __str__(self):
         return f'{self.title} | {self.pk}'
 
 
-class Image(models.Model):
-    data = models.ImageField()
-    pereval = models.ForeignKey(Pereval, on_delete=models.CASCADE)
+# Модель фотографий
+class PerevalImage(models.Model):
+    pereval = models.ForeignKey(PerevalAdded, on_delete=models.CASCADE)
+    # TODO удостовериться на счет типа поля
+    image = models.ImageField()
+    date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Image | {self.pereval.title } | {self.pk}'
+        return f'Image | {self.pereval.title} | {self.pk}'

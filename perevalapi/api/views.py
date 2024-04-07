@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 
-from .models import Pereval, User, Cords, Level
-from .serializers import PerevalSerializer, UserSerializer, CordsSerializer, LevelSerializer
+from .models import PerevalAdded, User, Coords, Level
+from .serializers import PerevalAddedSerializer, UserSerializer, CoordsSerializer, LevelSerializer
 
 
 # Create your views here.
-class PerevalViewSet(viewsets.ModelViewSet):
-    queryset = Pereval.objects.all()
-    serializer_class = PerevalSerializer
+class PerevalAddedViewSet(viewsets.ModelViewSet):
+    queryset = PerevalAdded.objects.all()
+    serializer_class = PerevalAddedSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -16,9 +16,9 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-class CordsViewSet(viewsets.ModelViewSet):
-    queryset = Cords.objects.all()
-    serializer_class = CordsSerializer
+class CoordsViewSet(viewsets.ModelViewSet):
+    queryset = Coords.objects.all()
+    serializer_class = CoordsSerializer
 
 
 class LevelViewSet(viewsets.ModelViewSet):
