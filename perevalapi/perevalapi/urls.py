@@ -18,14 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from api.views import PerevalAddedViewSet, UserViewSet, CoordsViewSet, LevelViewSet
+from api.views import PerevalAddedViewSet, UserViewSet, CoordsViewSet, LevelViewSet, PerevalImageViewSet, PerevalAddedPostView
 
-
+# регистрация роутера с моделями
 router = routers.DefaultRouter()
-router.register(r'pereval', PerevalAddedViewSet)
-router.register(r'user', UserViewSet)
+router.register(r'perevals', PerevalAddedViewSet)
+router.register(r'users', UserViewSet)
 router.register(r'coords', CoordsViewSet)
-router.register(r'level', LevelViewSet)
+router.register(r'levels', LevelViewSet)
+router.register(r'images', PerevalImageViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

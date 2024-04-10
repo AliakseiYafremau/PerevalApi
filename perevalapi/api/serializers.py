@@ -1,8 +1,9 @@
 from rest_framework import serializers
 
-from .models import PerevalAdded, User, Coords, Level
+from .models import PerevalAdded, User, Coords, Level, PerevalImage
 
 
+# Создание сериализера
 class PerevalAddedSerializer(serializers.ModelSerializer):
     class Meta:
         model = PerevalAdded
@@ -24,4 +25,10 @@ class CoordsSerializer(serializers.ModelSerializer):
 class LevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Level
+        fields = '__all__'
+
+
+class PerevalImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PerevalImage
         fields = '__all__'
