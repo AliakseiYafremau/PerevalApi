@@ -28,8 +28,11 @@ router.register(r'coords', CoordsViewSet)
 router.register(r'levels', LevelViewSet)
 router.register(r'images', PerevalImageViewSet)
 
+# url паттерны
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('api/', include('rest_framework.urls', namespace='rest_framework')),
+    # метод пост для создания перевала
+    path('submitData/', PerevalAddedPostView.as_view()),
 ]
