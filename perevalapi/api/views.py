@@ -36,6 +36,17 @@ class PerevalAddedPostView(generics.ListCreateAPIView):
     queryset = PerevalAdded.objects.all()
     serializer_class = PerevalAddedSerializer
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        user_email = self.request.query_params.get('user__email')
+        print(user_email)
+        if user_email:
+            print('email')
+            return PerevalAdded.objects.filter(user__email=user_email)
+        print('not')
+        return queryset
+
 
 class PerevalAddedUpdateView(generics.RetrieveUpdateAPIView):
     queryset = PerevalAdded.objects.all()
