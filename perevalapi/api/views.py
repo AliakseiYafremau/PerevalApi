@@ -36,6 +36,7 @@ class PerevalAddedPostView(generics.ListCreateAPIView):
     queryset = PerevalAdded.objects.all()
     serializer_class = PerevalAddedSerializer
 
+    # переписывание get_queryset для фильтрации по email
     def get_queryset(self):
         queryset = super().get_queryset()
 

@@ -34,6 +34,7 @@ class PerevalImageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+# Сериалайзер для метода PATCH
 class PerevalAddedUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = PerevalAdded
