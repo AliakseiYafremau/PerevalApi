@@ -2,8 +2,7 @@ from rest_framework import viewsets
 from rest_framework import generics
 
 from .models import PerevalAdded, User, Coords, Level, PerevalImage
-from .serializers import PerevalAddedSerializer, UserSerializer, CoordsSerializer, LevelSerializer, \
-    PerevalImageSerializer
+from .serializers import *
 
 
 # Создание представлений набора
@@ -35,3 +34,8 @@ class PerevalImageViewSet(viewsets.ModelViewSet):
 class PerevalAddedPostView(generics.ListCreateAPIView):
     queryset = PerevalAdded.objects.all()
     serializer_class = PerevalAddedSerializer
+
+
+class PerevalAddedUpdateView(generics.RetrieveUpdateAPIView,):
+    queryset = PerevalAdded.objects.all()
+    serializer_class = PerevalAddedUpdateSerializer

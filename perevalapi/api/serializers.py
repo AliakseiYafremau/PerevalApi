@@ -32,3 +32,9 @@ class PerevalImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = PerevalImage
         fields = '__all__'
+
+
+class PerevalAddedUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PerevalAdded
+        exclude = ['user']

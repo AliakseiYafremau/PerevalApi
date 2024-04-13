@@ -18,15 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from api.views import PerevalAddedViewSet, UserViewSet, CoordsViewSet, LevelViewSet, PerevalImageViewSet, PerevalAddedPostView
+from api import views
 
 # регистрация роутера с моделями
 router = routers.DefaultRouter()
-router.register(r'perevals', PerevalAddedViewSet)
-router.register(r'users', UserViewSet)
-router.register(r'coords', CoordsViewSet)
-router.register(r'levels', LevelViewSet)
-router.register(r'images', PerevalImageViewSet)
+router.register(r'perevals', views.PerevalAddedViewSet)
+router.register(r'users', views.UserViewSet)
+router.register(r'coords', views.CoordsViewSet)
+router.register(r'levels', views.LevelViewSet)
+router.register(r'images', views.PerevalImageViewSet)
 
 # url паттерны
 urlpatterns = [
@@ -34,5 +34,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('api/', include('rest_framework.urls', namespace='rest_framework')),
     # метод пост для создания перевала
-    path('submitData/', PerevalAddedPostView.as_view()),
+    path('submitData/', views.PerevalAddedPostView.as_view()),
+    path('submitData/<int:pk>/', views.PerevalAddedUpdateView.as_view()),
 ]
