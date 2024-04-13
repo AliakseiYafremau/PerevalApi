@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from rest_framework import generics
+from rest_framework.response import Response
 
 from .models import PerevalAdded, User, Coords, Level, PerevalImage
 from .serializers import *
@@ -36,6 +37,17 @@ class PerevalAddedPostView(generics.ListCreateAPIView):
     serializer_class = PerevalAddedSerializer
 
 
-class PerevalAddedUpdateView(generics.RetrieveUpdateAPIView,):
+class PerevalAddedUpdateView(generics.RetrieveUpdateAPIView):
     queryset = PerevalAdded.objects.all()
     serializer_class = PerevalAddedUpdateSerializer
+
+    # переписывание UpdateModelMixin-а, который сохраняет обьект
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        is_serializer_valid = serializer.is_valid()
+        if is_serializer_valid:
+            serializer.save()
+            return Response({'state': 1, 'message': 'Запись успешно обновлена'})
+        else:
+            return Response({'state': 0, 'message': serializer.errors})
