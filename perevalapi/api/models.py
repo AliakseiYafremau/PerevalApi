@@ -3,6 +3,7 @@ from django.db import models
 
 # Модель пользователя
 class User(models.Model):
+    """ Модель пользователя """
     email = models.EmailField(unique=True)
     fam = models.CharField(max_length=25)
     name = models.CharField(max_length=25)
@@ -15,6 +16,7 @@ class User(models.Model):
 
 # Модель координат перевала
 class Coords(models.Model):
+    """ Модель координат перевала """
     latitude = models.DecimalField(max_digits=12, decimal_places=4)
     longitude = models.DecimalField(max_digits=12, decimal_places=4)
     height = models.IntegerField()
@@ -25,6 +27,7 @@ class Coords(models.Model):
 
 # Модель уровня перевала
 class Level(models.Model):
+    """ Модель уровня перевала """
     winter = models.CharField(max_length=25)
     spring = models.CharField(max_length=25)
     summer = models.CharField(max_length=25)
@@ -36,7 +39,7 @@ class Level(models.Model):
 
 # Модель перевала
 class PerevalAdded(models.Model):
-
+    """ Модель перевала"""
     STATUS = [
         ('new', 'новый'),
         ('pending', 'в работе'),
