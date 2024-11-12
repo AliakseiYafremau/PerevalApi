@@ -27,7 +27,9 @@ python -m venv venv
 venv/Scripts/activate
 ```
 4. ### Установка зависимостей
+```
 pip install -r PerevalApi/requirements.txt
+```
 5. ### Вход в основную папку проекта
 ```commandline
 cd PerevalApi
@@ -45,7 +47,7 @@ cd perevalapi
 ```
 8. ### Запуск проекта
 ```commandline
-py manage.py runserver
+python manage.py runserver
 ```
 *** 
-## Пример работающего приложения [REST-API](http://alekseiyafremau.pythonanywhere.com/)
+## Пример работающего приложения [REST-API](http://alekseiyafremau.pythonanywhere.com/)(Устарело)
